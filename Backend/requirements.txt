@@ -4,3 +4,16 @@ torch
 pillow
 numpy
 opencv-python
+gitpython
+matplotlib
+psutil
+PyYAML
+requests
+scipy
+thop
+torchvision
+tqdm
+ultralytics
+pandas
+seaborn
+setuptools
