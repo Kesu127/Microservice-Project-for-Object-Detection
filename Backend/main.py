@@ -15,8 +15,9 @@ async def predict(file: UploadFile = File(...)):
     processed_image.save(f"output/{file.filename}")
     with open(f"output/{file.filename.split('.')[0]}.json", "w") as f:
         f.write(predictions)
-        
+    
     return predictions
 
 if __name__ == "__main__":
+    # Ensure FastAPI listens on all interfaces within the container
     uvicorn.run(app, host="0.0.0.0", port=8000)
