@@ -1,12 +1,15 @@
+version: '3'
 services:
-  frontend:
-    build: ./frontend
-    ports:
-      - "5000:5000"  # Expose the frontend on localhost:5000
-    depends_on:
-      - backend  # Ensure frontend waits for backend to be ready
-
   backend:
     build: ./backend
     ports:
-      - "8000:8000"  # Expose backend internally on port 8000
+      - "8000:8000"
+    restart: always  # Restarts the backend if it encounters an issue
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - backend  # Ensures backend starts before frontend
+    restart: always  # Restarts the frontend to retry if backend is not available
