@@ -51,9 +51,7 @@ async def predict(file: UploadFile = File(...)):
         logging.info("Predictions JSON saved as %s", json_path)
 
         img_base64 = image_to_base64(processed_image)
-
-        # Return the image as a StreamingResponse
-        return {"image":img_base64,#StreamingResponse(img_byte_arr, media_type="image/png"),
+        return {"image":img_base64,
                 "predictions":predictions}
 
     except HTTPException as http_err:

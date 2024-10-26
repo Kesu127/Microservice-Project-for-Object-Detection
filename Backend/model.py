@@ -11,6 +11,6 @@ def detect_objects(image):
     # Draw bounding boxes on the image
     draw = ImageDraw.Draw(image)
     for _, row in results.pandas().xyxy[0].iterrows():
-        draw.rectangle([row['xmin'], row['ymin'], row['xmax'], row['ymax']], outline="red", width=2)
+        draw.rectangle([row['xmin'], row['ymin'], row['xmax'], row['ymax']], outline="yellow", width=4)
     
     return predictions, image
