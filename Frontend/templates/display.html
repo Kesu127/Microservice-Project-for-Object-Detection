@@ -22,9 +22,11 @@
     <h1></h1>
    
     {% if prediction %}
-    <p>{{ prediction }}</p> <!-- Use the passed heading -->
+    <p>PREDICTION </p>
+    <p> {{ prediction }}</p>
 {% endif %}
     {% if image_data %}
+    <p> PROCESSED IMAGE </p>
         <img src="data:image/png;base64,{{ image_data }}" alt="Sample Image">
     {% else %}
         <p>No image available.</p>
