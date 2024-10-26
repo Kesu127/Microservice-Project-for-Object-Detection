@@ -4,10 +4,17 @@ from model import detect_objects
 from PIL import Image, UnidentifiedImageError
 import io
 import os
+from fastapi.responses import StreamingResponse
+import base64
 
 app = FastAPI()
 logging.basicConfig(level=logging.DEBUG)
-
+def image_to_base64(image: Image.Image) -> str:
+    """Convert a PIL Image to a Base64 string."""
+    buffered = io.BytesIO()
+    image.save(buffered, format="PNG")
+    img_str = base64.b64encode(buffered.getvalue()).decode('utf-8')
+    return img_str
 # Ensure the output directory exists
 os.makedirs("output", exist_ok=True)
 
@@ -43,7 +50,11 @@ async def predict(file: UploadFile = File(...)):
             json.dump(predictions, f)
         logging.info("Predictions JSON saved as %s", json_path)
 
-        return predictions
+        img_base64 = image_to_base64(processed_image)
+
+        # Return the image as a StreamingResponse
+        return {"image":img_base64,#StreamingResponse(img_byte_arr, media_type="image/png"),
+                "predictions":predictions}
 
     except HTTPException as http_err:
         logging.error(f"HTTP error occurred: {http_err.detail}")
