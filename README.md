@@ -65,7 +65,7 @@ Microservice Project for Object Detection
 1. **Clone the Repository**: 
     ```
     git clone https://github.com/Kesu127/Microservice-Project-for-Object-Detection
-    cd microservice-object-detection
+    cd Microservice-Project-for-Object-Detection
     ```
 
 2. **Build and Run with Docker Compose**:
