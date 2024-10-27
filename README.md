@@ -114,7 +114,7 @@ UI
 UI OUTPUT
 !["UI Output"](/Backend/output/Image%20Upload.png)
 Example JSON output:
-```json
+````
 [
   {
     \"name\": \"object_label\",
@@ -126,7 +126,7 @@ Example JSON output:
   },
   ...
 ]
-```
+````
 PREDICTION 1
 !["Prediction1"](/Backend/output/Prediction%201.png)
 
